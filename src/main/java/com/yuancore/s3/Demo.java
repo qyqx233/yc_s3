@@ -14,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.UUID;
 
@@ -26,7 +25,7 @@ public class Demo {
         ClientConfiguration conf = new ClientConfiguration();
         conf.setProtocol(Protocol.HTTP);
         conf.setSignerOverride("S3SignerType");
-        conf.setMaxConnections(10); // 可以在此设置最大连接数
+//        conf.setMaxConnections(100); // 可以在此设置最大连接数
         AWSCredentials credentials = new BasicAWSCredentials(Config.rgwPassport.getAccessKey(),
                 Config.rgwPassport.getSecretKey());
 
@@ -37,7 +36,7 @@ public class Demo {
     }
 
     @Test
-    public void uploadObject() throws IOException, InterruptedException {
+    public void uploadObject() throws IOException {
         try {
 //            initClient();
             String objID = UUID.randomUUID().toString();
